@@ -1,0 +1,4 @@
+https://github.com/letwhois/bash apidsl/apidsl/bash letwhois
+https://github.com/letwhois/php apidsl/apidsl/php letwhois
+https://github.com/reactphp/dns apidsl/apidsl/php reactphp
+https://github.com/letpath/bash apidsl/apidsl/bash letpath
