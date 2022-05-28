@@ -1,5 +1,5 @@
 
-## About inframonit [<span style='font-size:20px;'>&#x270D;</span>](https://github.com/apipackage/bash/edit/main/DOCS/ABOUT.md)
+## About apipackage [<span style='font-size:20px;'>&#x270D;</span>](https://github.com/apipackage/bash/edit/main/DOCS/ABOUT.md)
 
 
 Few examples:
