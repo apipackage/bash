@@ -13,9 +13,13 @@
 CMD=$1
 [ -z "$CMD" ] && CMD="install"
 #
-PROJECT_LIST=$2
-[ -z "$PROJECT_LIST" ] && [ ! -f ".apifork" ] && PROJECT_LIST=$(cat ".apifork")
-[ -z "$PROJECT_LIST" ] && PROJECT_LIST="apifork.txt"
+PROJECT_FILE=$2
+# zapisz domyslnie do .apifork gdy podano plik konfiguracyjny
+[ ! -z "$PROJECT_FILE" ] && echo "$PROJECT_FILE" > ".apifork"
+# gdy brak podanego pliku konfiguracyjnego
+[ -z "$PROJECT_FILE" ] && PROJECT_FILE="apifork.txt"
+
+[ -z "$PROJECT_LIST" ] && PROJECT_LIST=$(cat ".apifork")
 # START
 # If the last line of your file has no newline on the end
 while git_repo=; IFS=$' \t\r\n' read -r git_repo || [[ $git_repo ]]; do
