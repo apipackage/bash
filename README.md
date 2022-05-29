@@ -157,6 +157,10 @@ remove [letpath](https://github.com/letpath/bash) package from apipackage projec
 
 ## Contribution [<span style='font-size:20px;'>&#x270D;</span>](https://github.com/apipackage/bash/edit/main/DOCS/CONTRIBUTION.md)
 
+Solutions for development:
+
+### Install
+
 Install dependencies after created project
 ```bash
 curl https://raw.githubusercontent.com/apifork/bash/main/apifork.sh -o apifork
@@ -174,8 +178,9 @@ echo "https://github.com/letwhois/bash apidsl/apidsl/bash letwhois" >> "apipacka
 
 Edit documentation with flatedit
 ```bash
-echo "#!/bin/bash" > "readme"
-echo "./flatedit/readme.sh readme.txt" > "readme"
+echo '#!/bin/bash' > "readme"
+echo './flatedit/readme.sh readme.txt' >> "readme"
+
 echo "./DOCS/MENU.md" >> "readme.txt"
 echo "./DOCS/ABOUT.md" >> "readme.txt"
 echo "./DOCS/FOOT.md" >> "readme.txt"

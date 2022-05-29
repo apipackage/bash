@@ -5,16 +5,18 @@
 ## Created Date: 26.05.2022
 
 ## EXAMPLE
-# ./apidsl.sh install
-# ./apidsl.sh update
-# ./apidsl.sh remove
+# ./apipackage.sh install
+# ./apipackage.sh update
+# ./apipackage.sh remove
 
 # CONFIG
 CMD=$1
 [ -z "$CMD" ] && CMD="install"
 #
+CONFIG_FILE=".apipackage"
+#
 PROJECT_LIST=$2
-#[ -z "$PROJECT_LIST" ] && [ ! -f ".apifork" ] && PROJECT_LIST=$(cat ".apifork")
+[ -z "$PROJECT_LIST" ] && [ -f "$CONFIG_FILE" ] && PROJECT_LIST=$(cat "$CONFIG_FILE")
 [ -z "$PROJECT_LIST" ] && PROJECT_LIST="apipackage.txt"
 #
 PROJECT_PATH=$(pwd)
@@ -51,7 +53,7 @@ while git_repo=; IFS=$' \t\r\n' read -r git_repo || [[ $git_repo ]]; do
     ${APIBUILD}
     cd ${PROJECT_PATH}
     ##
-    ##echo "apidsl/apidsl/${language}/${name}" >>.gitignore
+    ##echo "apipackage/apipackage/${language}/${name}" >>.gitignore
   elif [ "$CMD" == "update" ]; then
     cd "$GIT_PATH/$GIT_FOLDER" && git pull && ${UPDATE}
     pwd
