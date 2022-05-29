@@ -168,7 +168,7 @@ echo "https://github.com/flatedit/bash.git flatedit" > "apifork.dev.txt"
 Install package list after created project
 ```bash
 curl https://raw.githubusercontent.com/apipackage/bash/main/apipackage.sh -o apipackage
-echo "https://github.com/letwhois/bash apidsl/apidsl/bash letwhois" > "apipackage.txt"
+echo "https://github.com/letwhois/bash apidsl/apidsl/bash letwhois" >> "apipackage.txt"
 ./apipackage install
 ```
 
