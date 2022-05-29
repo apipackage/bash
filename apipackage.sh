@@ -14,10 +14,15 @@ CMD=$1
 [ -z "$CMD" ] && CMD="install"
 #
 CONFIG_FILE=".apipackage"
+CONFIG_DEFAULT="apipackage.txt"
+if [ "$CMD" == "init" ]; then
+  echo -n "$CONFIG_DEFAULT" > "$CONFIG_FILE"
+  exit
+fi
 #
 PROJECT_LIST=$2
 [ -z "$PROJECT_LIST" ] && [ -f "$CONFIG_FILE" ] && PROJECT_LIST=$(cat "$CONFIG_FILE")
-[ -z "$PROJECT_LIST" ] && PROJECT_LIST="apipackage.txt"
+[ -z "$PROJECT_LIST" ] && PROJECT_LIST="$CONFIG_DEFAULT"
 #
 PROJECT_PATH=$(pwd)
 echo $PROJECT_PATH
