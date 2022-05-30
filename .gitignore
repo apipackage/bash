@@ -1,3 +1,4 @@
+.apipackage.logs.txt
 .apifork
 DOCS/PROJECTS.md
 DOCS/PROJECTS_LOCAL.md
@@ -155,3 +156,6 @@ reactphp
 flatedit
 plainedit
 reactphp
+.flatedit.logs.txt
+.flatedit.logs.txt
+.flatedit.logs.txt

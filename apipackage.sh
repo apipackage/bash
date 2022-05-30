@@ -13,16 +13,46 @@
 CMD=$1
 [ -z "$CMD" ] && CMD="install"
 #
-CONFIG_FILE=".apipackage"
-CONFIG_DEFAULT="apipackage.txt"
+MODULE="apipackage"
+FILE_EXT=".txt"
+CONFIG_FILE=".${MODULE}"
+CONFIG_DEFAULT="${MODULE}${FILE_EXT}"
+CONFIG_DEV="${MODULE}.dev${FILE_EXT}"
+CONFIG_TEST="${MODULE}.test${FILE_EXT}"
+LOGS=".${MODULE}.logs${FILE_EXT}"
+echo "`date +"%T.%3N"` START" > $LOGS
+#echo "$(date +"%T.%3N") " >> $LOGS
+#
+if [ "$CMD" == "-h" ] || [ "$CMD" == "--help" ]; then
+  echo "set config for:"
+  echo "init - the default config, for customers"
+  echo "dev - development packages, for contributors and developers"
+  echo "test - for testing the project"
+  echo ""
+  echo "git repositories:"
+  echo "install"
+  echo "update"
+  echo "remove"
+  echo ""
+  exit
+fi
 if [ "$CMD" == "init" ]; then
   echo -n "$CONFIG_DEFAULT" > "$CONFIG_FILE"
+  exit
+fi
+if [ "$CMD" == "dev" ]; then
+  echo -n "$CONFIG_DEV" > "$CONFIG_FILE"
+  exit
+fi
+if [ "$CMD" == "test" ]; then
+  echo -n "$CONFIG_TEST" > "$CONFIG_FILE"
   exit
 fi
 #
 PROJECT_LIST=$2
 [ -z "$PROJECT_LIST" ] && [ -f "$CONFIG_FILE" ] && PROJECT_LIST=$(cat "$CONFIG_FILE")
 [ -z "$PROJECT_LIST" ] && PROJECT_LIST="$CONFIG_DEFAULT"
+[ ! -f "$PROJECT_LIST" ] && echo -n "" > "$CONFIG_DEFAULT" && echo "$LOGS" >> ".gitignore"
 #
 PROJECT_PATH=$(pwd)
 echo $PROJECT_PATH
