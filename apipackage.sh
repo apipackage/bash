@@ -13,6 +13,7 @@
 CMD=$1
 [ -z "$CMD" ] && CMD="install"
 #
+DSL_HASH="#"
 MODULE="apipackage"
 FILE_EXT=".txt"
 CONFIG_FILE=".${MODULE}"
@@ -60,6 +61,7 @@ echo $PROJECT_PATH
 # If the last line of your file has no newline on the end
 while git_repo=; IFS=$' \t\r\n' read -r git_repo || [[ $git_repo ]]; do
   repo=($git_repo)
+  [ "${repo:0:1}" == "${DSL_HASH}" ] && continue
   GIT_URL="${repo[0]}"
   [ -z "$GIT_URL" ] && echo "git url is empty, example: https://github.com/letpath/bash" && break
   GIT_PATH="${repo[1]}"
